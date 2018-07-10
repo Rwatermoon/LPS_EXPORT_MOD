@@ -1,0 +1,11 @@
+Tue 10 Jul 2018 17:23:04 INFO FilledForm.py 24 15604 Success connect to rm-bp146ee7y1vi7b1v0do.mysql.rds.aliyuncs.com
+Tue 10 Jul 2018 17:23:05 INFO FilledForm.py 68 15604 Success read form with ID=66
+Tue 10 Jul 2018 17:23:11 INFO FilledForm.py 24 13008 Success connect to rm-bp146ee7y1vi7b1v0do.mysql.rds.aliyuncs.com
+Tue 10 Jul 2018 17:23:12 INFO FilledForm.py 68 13008 Success read form with ID=66
+Tue 10 Jul 2018 17:23:12 INFO FilledForm.py 95 13008 Success export to example.xls
+Tue 10 Jul 2018 17:23:25 INFO FilledForm.py 24 16192 Success connect to rm-bp146ee7y1vi7b1v0do.mysql.rds.aliyuncs.com
+Tue 10 Jul 2018 17:23:25 INFO FilledForm.py 68 16192 Success read form with ID=66
+Tue 10 Jul 2018 17:23:25 INFO FilledForm.py 96 16192 Success export to example.xls
+Tue 10 Jul 2018 17:23:58 INFO FilledForm.py 24 880 Success connect to rm-bp146ee7y1vi7b1v0do.mysql.rds.aliyuncs.com
+Tue 10 Jul 2018 17:23:58 INFO FilledForm.py 68 880 Success read form with ID=66
+Tue 10 Jul 2018 17:23:58 INFO FilledForm.py 97 880 Success export to example.xls
