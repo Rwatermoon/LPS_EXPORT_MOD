@@ -25,23 +25,22 @@ if __name__=='__main__':
         filled_from_id_list=filled_arg.split('=')[1].split(',')
         export_path=export_arg.split('=')[1]
 
-        filled_from_id_list=[index for index in range(85,193)]
 
-        try:
-            filled_form=FilledForm(filled_from_id_list[0])
-            filled_form.init_form(database_info,table_name)
-            if filled_form==None:
-                print("Failed to init form")
-                logging.info("Failed to init form")
-            else:
-                for from_id in filled_from_id_list:
-                    filled_form.add_form(from_id,database_info,table_name)
-                filled_form.save_form(export_path)
-                print("Success export form to {}".format(export_path))
-                logging.info("Success export form to {}".format(export_path))
-        except:
-            print("Failed to export form")
-            logging.info("Failed to export form")
+
+        filled_form=FilledForm(filled_from_id_list[0])
+        filled_form.init_form(database_info,table_name)
+        if filled_form==None:
+            print("Failed to init form")
+            logging.info("Failed to init form")
+        else:
+            for from_id in filled_from_id_list:
+                filled_form.add_form(from_id,database_info,table_name)
+            filled_form.save_form(export_path)
+            print("Success export form to {}".format(export_path))
+            logging.info("Success export form to {}".format(export_path))
+        # except:
+        #     print("Failed to export form")
+        #     logging.info("Failed to export form")
 
 
 
