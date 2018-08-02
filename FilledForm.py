@@ -139,6 +139,8 @@ class FilledForm:
                 elif sec_question['type']=='single':
                     for filled_q in self.filled_question_qid[sec_question['qid']]:
                         option_index=filled_q[4]-1
+                        if option_index<0:option_index=0
+                        if option_index>len(sec_question['options'])-1:option_index=len(sec_question['options'])-1
                         option_val=sec_question['options'][option_index]
                         ws.write(row_num, line_num, option_val)
                         row_num += 1
