@@ -74,19 +74,20 @@ class FilledForm:
         finally:
             conn.close()
 
-    def add_form(self,form_id,database_info,table_name):
+    def add_form(self,filled_from_id_list,database_info,table_name):
         try:
             conn = mysql.connector.connect(host=database_info['host'], user=database_info['user'],
                                            password=database_info['password'],
                                            database=database_info['database'], use_unicode=True)
             cursor = conn.cursor()
-            sql_str = 'select * from {} where filled_id={}'.format(table_name['filled_question'], form_id)
+            sql_str = 'select * from {} where filled_id in {}'.format(table_name['filled_question'], tuple(filled_from_id_list))
+            print(sql_str)
             cursor.execute(sql_str)
             filled_questions = cursor.fetchall()
             for q in filled_questions:
                 self.filled_question_qid[q[3]].append(q)
 
-            logging.info("Success read form with ID={}".format(form_id))
+            # logging.info("Success read form with ID={}".format(form_id))
         except AttributeError as e:
             print(e)
             logging.info("{} in add_form".format(e))

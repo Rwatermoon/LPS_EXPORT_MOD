@@ -33,8 +33,10 @@ if __name__=='__main__':
             print("Failed to init form")
             logging.info("Failed to init form")
         else:
-            for from_id in filled_from_id_list:
-                filled_form.add_form(from_id,database_info,table_name)
+            # for from_id in filled_from_id_list:
+            #     filled_form.add_form(from_id,database_info,table_name)
+
+            filled_form.add_form(filled_from_id_list, database_info, table_name)
             filled_form.save_form(export_path)
             print("Success export form to {}".format(export_path))
             logging.info("Success export form to {}".format(export_path))
