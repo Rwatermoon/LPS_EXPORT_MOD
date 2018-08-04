@@ -16,16 +16,16 @@ class FilledForm:
         self.filled_question_qid=defaultdict(list)
 
     def decode_division(self,option_code):
-        division_code_source=defaultdict(str)
+        division_code_source=defaultdict(int)
         with open('meta_division.txt','r',encoding='utf8') as meta_file:
             for line in meta_file:
                 code_list=line.split('\t')
                 division_code_source[code_list[0]]=code_list[1]
 
         result=""
-        province=division_code_source[option_code]
-        city=division_code_source[option_code[:-2]+'00']
-        county=division_code_source[option_code[:-4]+'0000']
+        province=division_code_source[str(option_code)]
+        city=division_code_source[str(option_code//100*100)]
+        county=division_code_source[str(option_code//10000*10000)]
         result=province+'/'+city+'/'+county
 
 
@@ -80,7 +80,10 @@ class FilledForm:
                                            password=database_info['password'],
                                            database=database_info['database'], use_unicode=True)
             cursor = conn.cursor()
-            sql_str = 'select * from {} where filled_id in {}'.format(table_name['filled_question'], tuple(filled_from_id_list))
+            if len(filled_from_id_list)==1:
+                sql_str='select * from {} where filled_id={}'.format(table_name['filled_question'],filled_from_id_list[0])
+            else:
+                sql_str = 'select * from {} where filled_id in {}'.format(table_name['filled_question'], tuple(filled_from_id_list))
             print(sql_str)
             cursor.execute(sql_str)
             filled_questions = cursor.fetchall()
@@ -111,7 +114,7 @@ class FilledForm:
                 if sec_question['type']=='division':
                     for filled_q in self.filled_question_qid[sec_question['qid']]:
                         option_code = filled_q[4]
-                        option_value=self.decode_division(str(option_code))
+                        option_value=self.decode_division(option_code)
                         ws.write(row_num, line_num, option_value)
                         row_num += 1
                     line_num = line_num + 1
