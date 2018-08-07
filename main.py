@@ -30,7 +30,6 @@ if __name__=='__main__':
 
         filled_from_id_list=filled_arg.split('=')[1].split(',')
         export_path=export_arg.split('=')[1]
-        filled_from_id_list=get_filled_form_id_by_user()
 
         filled_form=FilledForm(filled_from_id_list[0])
         filled_form.init_form(database_info,table_name)

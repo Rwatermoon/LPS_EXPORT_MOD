@@ -116,7 +116,7 @@ class FilledForm:
                 row_num+=1
                 for form_id in self.filled_from_id_list:
                     self.filled_question_qid=defaultdict(list)
-                    for q in self.form_list[form_id]:
+                    for q in self.form_list[int(form_id)]:
                         self.filled_question_qid[q[3]].append(q)
 
 
